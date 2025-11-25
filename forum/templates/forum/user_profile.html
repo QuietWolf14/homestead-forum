@@ -1,0 +1,11 @@
+{% extends "forum/base.html" %}
+
+{% block content %}
+
+<h1>{{ user.username }}'s Profile</h1>
+
+<h3>Location: {{ profile.location }}</h3>
+
+<img src="{{ profile.avatar.url }}">
+
+{% endblock %}

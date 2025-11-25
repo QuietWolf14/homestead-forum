@@ -1,0 +1,26 @@
+{% extends "forum/base.html" %}
+
+{% block content %}
+<p><a href="{% url 'forum:forum' forum_id=post.forum.pk %}">Back to {{ post.forum.name }}</a></p>
+<h1>{{ post.title }}</h1>
+
+<p>{{ post.text }}</p>
+<img src=""> <p>{{ post.author.username }}</p>
+
+{% if user.is_authenticated %}
+    {% if post.author.username == user.username %}
+    <a href="{% url 'forum:edit_post' post_id=post.pk %}">Edit Post</a>
+    {% endif %}
+
+    <p><a href="{% url 'forum:new_comment' %}?post_id={{ post.pk }}">Add Comment</a></p>
+{% endif %}
+
+{% if comment_count > 0 %}
+    {% for comment in comments %}
+    <p>{{ comment.author.username }} says:</p>
+    <p>{{ comment.text }}</p>
+    {% endfor %}
+{% else %}
+<h2>No Comments Yet!</h2>
+{% endif %}
+{% endblock %}

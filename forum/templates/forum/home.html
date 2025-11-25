@@ -1,0 +1,18 @@
+{% extends "forum/base.html" %}
+
+{% block content %}    
+    {% if user.is_authenticated %}
+    <h1>Welcome to Homestead Forum, {{ user.username }}!</h1>
+    {% else %}
+    <h1>Welcome to Homestead Forum!</h1>
+    {% endif %}
+
+    {% for forum_group in forum_groups %}
+        <h2>{{ forum_group.name }}</h2>
+        {% for forum in forums %}
+            {% if forum.forum_group.id == forum_group.id %}
+                <h3><a href="{% url 'forum:forum' forum_id=forum.pk %}">{{ forum.name }}</a></h3>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

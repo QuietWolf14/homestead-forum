@@ -1,0 +1,13 @@
+{% extends "forum/base.html" %}
+
+{% block content %}
+<p><a href="{% url 'forum:forum' forum_id=forum.pk %}">Back to {{ forum.name }}</a></p>
+<h1>{{ post.title }}</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="hidden" name="forum_id" value="{{ forum.pk }}">
+    <button type="submit">Save Post</button>
+</form>
+{% endblock %}

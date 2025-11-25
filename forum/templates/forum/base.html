@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homestead Forum</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon_placeholder.png' %}">
+</head>
+<body>
+    <a href="{% url 'forum:home' %}">Home</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'forum:user_profile' username=user.username %}" style="float: right;">{{ user.username }}</a>
+
+    <form action="{% url 'logout' %}" method="post" style="float: right;">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
