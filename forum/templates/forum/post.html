@@ -19,6 +19,11 @@
     {% for comment in comments %}
     <p>{{ comment.author.username }} says:</p>
     <p>{{ comment.text }}</p>
+    {% if user.is_authenticated %}
+        {% if comment.author.username == user.username %}
+        <p><a href="{% url 'forum:edit_comment' comment_id=comment.pk %}">Edit Comment</a></p>
+        {% endif %}
+    {% endif %}
     {% endfor %}
 {% else %}
 <h2>No Comments Yet!</h2>

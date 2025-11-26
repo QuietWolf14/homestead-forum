@@ -94,8 +94,7 @@ def create_comment(request):
     else:
         context = {}
         context['form'] = CommentForm()
-        post = get_object_or_404(Post, pk=request.GET['post_id'])
-        context['post'] = post
+        context['post'] = get_object_or_404(Post, pk=request.GET['post_id'])
 
         return render(request, 'forum/edit_comment.html', context)
 
@@ -104,7 +103,7 @@ def edit_comment(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if request.method == "POST":
-        form = CommentFormForm(request.POST, instance=comment)
+        form = CommentForm(request.POST, instance=comment)
 
         if form.is_valid():
             comment = form.save(commit=False)
@@ -115,7 +114,7 @@ def edit_comment(request, comment_id):
     else:
         context = {}
         context['form'] = CommentForm(instance=comment)
-        context['forum'] = get_object_or_404(Forum, pk=post.forum.id)
+        context['post'] = get_object_or_404(Forum, pk=comment.post.id)
 
     return render(request, 'forum/edit_comment.html', context)
 
