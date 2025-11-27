@@ -1,0 +1,68 @@
+.post-comment{
+    display: block;
+    unicode-bidi: isolate;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.message-inner{
+    display: flex;
+    position: relative;
+    padding-top: 24px;
+}
+
+.message-cell-user{
+    display: block;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    border-right: 1px solid hsla(220, 5%, calc(13% - (-1 * 10%)), 1);
+    min-width: 0;
+    color: white;
+    background: rgb(33, 32, 28);
+}
+
+.message-content{
+    display: block;
+    color: white;
+    background: rgb(64, 63, 53);
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+}
+
+.message-header {
+    display: flex
+;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    padding: 0 10px;
+    background: var(--ja-pager-button-bg);
+    border-bottom: 1px solid var(--ja-block-border);
+    border-radius: 5px 5px 0 0;
+    color: var(--ja-top-bar-color);
+    font-size: calc(11 / 15* 1rem);
+}
+
+.message-footer{
+    display: block;
+    margin-top: auto;
+    -webkit-user-select: none;
+    user-select: none;
+    color: white;
+    background: rgb(115, 114, 106);;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.avatar{
+    width: 96px;
+    height: 96px;
+    font-size: 58px;
+}

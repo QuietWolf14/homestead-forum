@@ -1,4 +1,9 @@
 {% extends "forum/base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'forum/css/post.css' %}">
+{% endblock %}
+
 
 {% block content %}
 <p><a href="{% url 'forum:forum' forum_id=post.forum.pk %}">Back to {{ post.forum.name }}</a></p>
@@ -17,13 +22,29 @@
 
 {% if comment_count > 0 %}
     {% for comment in comments %}
-    <p>{{ comment.author.username }} says:</p>
-    <p>{{ comment.text }}</p>
-    {% if user.is_authenticated %}
-        {% if comment.author.username == user.username %}
-        <p><a href="{% url 'forum:edit_comment' comment_id=comment.pk %}">Edit Comment</a></p>
-        {% endif %}
-    {% endif %}
+        <article class="post-comment">
+            <div class="message-inner">
+                <div class="message-cell-user">
+                    <div class="message-avatar">
+                        <img class="avatar" src="{{ comment.author.userprofile.avatar.url }}">
+                    </div>
+                    <div class="message-userDetails">
+                        <p>{{ comment.author.username }}</p>
+                    </div>
+                    
+                </div>
+                <div class="message-content" >
+                    <p>{{ comment.text }}</p>
+                    <footer class="message-footer">
+                        {% if user.is_authenticated %}
+                            {% if comment.author.username == user.username %}
+                                <p><a href="{% url 'forum:edit_comment' comment_id=comment.pk %}">Edit Comment</a></p>
+                            {% endif %}
+                        {% endif %}
+                    </footer>                    
+                </div>                
+            </div>           
+        </article>
     {% endfor %}
 {% else %}
 <h2>No Comments Yet!</h2>

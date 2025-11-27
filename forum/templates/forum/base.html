@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homestead Forum</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon_placeholder.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'forum/img/favicon_placeholder.png' %}">
+    {% block extrahead %}{% endblock %}
 </head>
 <body>
     <a href="{% url 'forum:home' %}">Home</a>
