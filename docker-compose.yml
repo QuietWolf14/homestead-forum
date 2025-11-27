@@ -1,0 +1,5 @@
+services:
+  forum:
+    image: quietwolf14/homestead-forum:latest
+    ports: 
+      - "127.0.0.1:8000:3000"
