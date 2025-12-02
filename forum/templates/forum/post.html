@@ -30,6 +30,9 @@
                     </div>
                     <div class="message-userDetails">
                         <p>{{ comment.author.username }}</p>
+                        <p>Location: {{ comment.author.userprofile.location }}</p>
+                        <p>Posts: {{ comment.author.post_set.count }}</p>
+                        <p>Comments: {{ comment.author.comment_set.count }}</p>
                     </div>
                     
                 </div>

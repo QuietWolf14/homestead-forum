@@ -8,4 +8,7 @@
 
 <img src="{{ profile.avatar.url }}">
 
+<p>Posts: {{ user.post_set.count }}</p>
+<p>Comments: {{ user.comment_set.count }}</p>
+
 {% endblock %}
